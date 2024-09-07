@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Library Management</h1>
+
+    <a href="/books/add" class="btn">Add Book</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.year}"></td>
+                <td>
+                    <a th:href="@{/books/edit/{id}(id=${book.id})}" class="btn">Edit</a>
+                    <a th:href="@{/books/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- New section for "Our Collections" -->
+    <section class="collections">
+        <h2>Our Collections</h2>
+        <div class="collection-items">
+            <div class="collection-item">
+                <img th:src="@{/images/harry_potter.jpg}" alt="Book 1">
+                <h3>Harry Potter and the Philosopher's Stone</h3>
+                <p>J.K. Rowling</p>
+            </div>
+            <div class="collection-item">
+                <img th:src="@{/images/dune.jpg}" alt="Book 2">
+                <h3>Dune</h3>
+                <p>Frank Herbert</p>
+            </div>
+            <div class="collection-item">
+                <img th:src="@{/images/spiderman.jpeg}" alt="Book 3">
+                <h3>The Amazing Spiderman</h3>
+                <p>Stan Lee</p>
+            </div>
+        </div>
+    </section>
+    
+</body>
+</html>
